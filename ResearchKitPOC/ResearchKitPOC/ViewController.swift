@@ -7,14 +7,21 @@
 //
 
 import UIKit
+import ResearchKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var graphView: ORKGraphChartView!
+    
+    let barChartDataSource = BarChartDataSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        graphView.dataSource = barChartDataSource
+        graphView.showsVerticalReferenceLines = true
+        graphView.showsHorizontalReferenceLines = true
     }
-
-
 }
 
