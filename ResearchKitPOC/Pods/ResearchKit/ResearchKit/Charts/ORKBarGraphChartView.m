@@ -208,6 +208,8 @@ static const CGFloat BarWidth = 10.0;
                 CAShapeLayer *lineLayer = [CAShapeLayer layer];
                 lineLayer.strokeColor = [self colorForPlotIndex:plotIndex subpointIndex:index totalSubpoints:numberOfStackedValues].CGColor;
                 lineLayer.lineWidth = BarWidth;
+                lineLayer.masksToBounds = false;
+                lineLayer.cornerRadius = 20.0f;
                 [self.plotView.layer addSublayer:lineLayer];
                 [lineLayers addObject:lineLayer];
             }
@@ -231,7 +233,7 @@ static const CGFloat BarWidth = 10.0;
             NSUInteger numberOfSubpoints = positionsOnYAxis.stackedValues.count;
             for (NSUInteger subpointIndex = 0; subpointIndex < numberOfSubpoints; subpointIndex++) {
                 double positionOnYAxis = positionsOnYAxis.stackedValues[subpointIndex].doubleValue;
-                UIBezierPath *linePath = [UIBezierPath bezierPath];
+                UIBezierPath *linePath = [UIBezierPath bezierPathWithRoundedRect:CGRectZero cornerRadius:5.0f];
                 
                 double barHeight = fabs(positionOnYAxis - previousYValue);
 
@@ -245,6 +247,8 @@ static const CGFloat BarWidth = 10.0;
                 
                 CAShapeLayer *lineLayer = self.lineLayers[plotIndex][pointIndex][subpointIndex];
                 lineLayer.path = linePath.CGPath;
+                lineLayer.masksToBounds = false;
+                lineLayer.cornerRadius = 5.0f;
                 lineLayerIndex++;
             }
         }

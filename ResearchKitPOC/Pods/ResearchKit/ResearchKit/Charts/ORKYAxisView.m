@@ -48,6 +48,8 @@ static const CGFloat ImageVerticalPadding = 3.0;
     NSMutableDictionary *_tickLabelsByFactor;
     
     NSString *_decimalFormat;
+    
+    NSArray *titles;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -67,6 +69,7 @@ static const CGFloat ImageVerticalPadding = 3.0;
         _parentGraphChartView = parentGraphChartView;
         _axisColor = _parentGraphChartView.axisColor;
         _titleColor = _parentGraphChartView.verticalAxisTitleColor;
+        titles = [[NSArray alloc] initWithObjects:@"Mild", @"Moderate", @"Severe", nil];
         [self setDecimalPlaces:0];
     }
     return self;
@@ -120,9 +123,10 @@ static const CGFloat ImageVerticalPadding = 3.0;
         if (minimumValue == maximumValue) {
             yAxisLabelFactors = @[ @0.5f ];
         } else {
-            yAxisLabelFactors = @[ @0.2f, @1.0f ];
+            yAxisLabelFactors = @[@0.33f, @0.66f, @0.99f ];
         }
         
+        int i = 0;
         for (NSNumber *factorNumber in yAxisLabelFactors) {
             
             CGFloat factor = factorNumber.floatValue;
@@ -136,7 +140,7 @@ static const CGFloat ImageVerticalPadding = 3.0;
                                          1);
             tickLayer.backgroundColor = _parentGraphChartView.axisColor.CGColor;
 
-            [self.layer addSublayer:tickLayer];
+       //     [self.layer addSublayer:tickLayer];
             _tickLayersByFactor[factorNumber] = tickLayer;
             
             CGFloat labelHeight = 20;
@@ -148,7 +152,7 @@ static const CGFloat ImageVerticalPadding = 3.0;
             
             CGFloat yValue = minimumValue + (maximumValue - minimumValue) * factor;
             if (yValue != 0) {
-                tickLabel.text = [NSString stringWithFormat:_decimalFormat, yValue];
+                tickLabel.text =  titles[i];//[NSString stringWithFormat:_decimalFormat, yValue];
             }
             tickLabel.backgroundColor = [UIColor clearColor];
             tickLabel.textColor = _titleColor;
@@ -158,6 +162,7 @@ static const CGFloat ImageVerticalPadding = 3.0;
             [tickLabel sizeToFit];
             [self addSubview:tickLabel];
             _tickLabelsByFactor[factorNumber] = tickLabel;
+            i++;
         }
     }
 }

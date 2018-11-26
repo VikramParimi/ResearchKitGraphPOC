@@ -25,3 +25,15 @@ class ViewController: UIViewController {
     }
 }
 
+class CustomORKGraphChartView: ORKGraphChartView {
+    
+}
+
+extension CustomORKGraphChartView {
+    
+    func yAxisTitleforPlotIndex() -> String {
+        
+        return ""
+    }
+    
+}

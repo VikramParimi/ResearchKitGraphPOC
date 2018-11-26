@@ -77,12 +77,12 @@
 const CGFloat ORKGraphChartViewLeftPadding = 10.0;
 const CGFloat ORKGraphChartViewPointAndLineWidth = 8.0;
 const CGFloat ORKGraphChartViewScrubberMoveAnimationDuration = 0.1;
-const CGFloat ORKGraphChartViewAxisTickLength = 12.0;
+const CGFloat ORKGraphChartViewAxisTickLength = 0.0;
 const CGFloat ORKGraphChartViewYAxisTickPadding = 2.0;
 
 static const CGFloat TopPadding = 7.0;
 static const CGFloat XAxisViewHeight = 30.0;
-static const CGFloat YAxisViewWidth = 45.0;
+static const CGFloat YAxisViewWidth = 60.0;
 static const CGFloat SnappingClosenessFactor = 0.3;
 static const CGSize ScrubberThumbSize = (CGSize){10.0, 10.0};
 static const CGFloat ScrubberFadeAnimationDuration = 0.2;

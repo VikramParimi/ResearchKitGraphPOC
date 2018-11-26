@@ -12,16 +12,16 @@ class BarChartDataSource: NSObject, ORKValueStackGraphChartViewDataSource {
     
     var plotPoints = [
         [
-        ORKValueStack(stackedValues: [4, 6]),
-        ORKValueStack(stackedValues: [2, 4, 4]),
-        ORKValueStack(stackedValues: [2, 6, 3, 6]),
-        ORKValueStack(stackedValues: [3, 8, 10, 12]),
-        ORKValueStack(stackedValues: [5, 10, 12, 8]),
-        ORKValueStack(stackedValues: [8, 13, 18]),
+        ORKValueStack(stackedValues: [4]),
+        ORKValueStack(stackedValues: [2]),
+        ORKValueStack(stackedValues: [2]),
+        ORKValueStack(stackedValues: [3]),
+        ORKValueStack(stackedValues: [5]),
+        ORKValueStack(stackedValues: [8]),
         ORKValueStack(stackedValues: [14]),
-        ORKValueStack(stackedValues: [6, 6]),
-        ORKValueStack(stackedValues: [3, 10, 12]),
-        ORKValueStack(stackedValues: [5, 11, 14]) ]
+        ORKValueStack(stackedValues: [6]),
+        ORKValueStack(stackedValues: [3]),
+        ORKValueStack(stackedValues: [5]) ]
     ]
     
     func graphChartView(_ graphChartView: ORKGraphChartView, dataPointForPointIndex pointIndex: Int, plotIndex: Int) -> ORKValueStack {
@@ -41,7 +41,6 @@ class BarChartDataSource: NSObject, ORKValueStackGraphChartViewDataSource {
     }
     
     func graphChartView(_ graphChartView: ORKGraphChartView, colorForPlotIndex plotIndex: Int) -> UIColor {
-        print(plotIndex)
-        return UIColor.darkGray
+        return #colorLiteral(red: 0.2941176471, green: 0.4784313725, blue: 0.8862745098, alpha: 1)
     }
 }
